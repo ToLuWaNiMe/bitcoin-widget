@@ -3,12 +3,14 @@ import axios from 'axios';
 import './App.css';
 
 function App() {
-  const [usdAmount, setUsdAmount] = useState('');
-  const [btcAmount, setBtcAmount] = useState('--');
-  const [btcPrice, setBtcPrice] = useState('--');
-  const [lastUpdated, setLastUpdated] = useState('--');
-  const [error, setError] = useState('');
+   // State variables to manage input, output, and API data
+  const [usdAmount, setUsdAmount] = useState(''); // User input in USD
+  const [btcAmount, setBtcAmount] = useState('--'); // Converted BTC amount
+  const [btcPrice, setBtcPrice] = useState('--');  // Latest BTC price in USD
+  const [lastUpdated, setLastUpdated] = useState('--'); // Timestamp of last API update
+  const [error, setError] = useState(''); //Error message to display to the user
 
+  // Fetch Bitcoin price from Api on initial render
   useEffect(() => {
     const fetchBtcPrice = async () => {
       try {
@@ -26,6 +28,7 @@ function App() {
     fetchBtcPrice();
   }, []);
 
+  // Convert USD to BTC whenever usdAmount or btcPrice changes
   useEffect(() => {
     if (usdAmount && btcPrice !== '--') {
       if (usdAmount < 0) {
@@ -36,7 +39,7 @@ function App() {
         setBtcAmount('--');
       } else {
         setError('');
-      const convertedBtc = (usdAmount / btcPrice).toFixed(8); // 8 decimal places
+      const convertedBtc = (usdAmount / btcPrice).toFixed(8); //Calculate BTC with 8 decimal places
       setBtcAmount(convertedBtc);
       }
    } else {
@@ -44,6 +47,7 @@ function App() {
     }
   }, [usdAmount, btcPrice]);
 
+  // Handle input change for USD amount
   const handleInputChange = (e) => {
     setUsdAmount(e.target.value);
   }

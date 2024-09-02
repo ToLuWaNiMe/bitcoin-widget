@@ -2,9 +2,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100vh; /* Full viewport height for centering
   margin: 0; 
-  background-color: #111111; /* Optional: background color for the body */
+  background-color: #111111; /* background color for the body */
 }
 
 
