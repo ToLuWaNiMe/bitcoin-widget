@@ -54,7 +54,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Bitcoin to USD Converter</h1>
+      <h1>USD Bitcoin Converter</h1>
       <div className="price-info">
         <p>Current BTC Price: ${btcPrice}</p>
         <p>Last Updated: {lastUpdated}</p>
